@@ -1,22 +1,17 @@
 window.onload = () => {
-
     const gameContainer = document.getElementById('gameContainer');
     const ball = document.getElementById('ball');
     const paddle = document.getElementById('paddle');
     const scoreBoard = document.getElementById('score');
 
-
     let ballX = Math.random() * (gameContainer.offsetWidth - ball.offsetWidth);
     let ballY = Math.random() * (gameContainer.offsetHeight - ball.offsetHeight);
-
     let ballDX = 2, ballDY = 3;
     let paddleX = 150;
     const paddleSpeed = 30;
     let score = 0;
 
-
     function updateGame() {
-
         ballX += ballDX;
         ballY += ballDY;
 
@@ -28,7 +23,6 @@ window.onload = () => {
         if (ballY <= 0) {
             ballDY = -ballDY;
         }
-
 
         const paddleTop = paddle.offsetTop;
         // Check for collision with paddle
@@ -52,7 +46,6 @@ window.onload = () => {
             return;
         }
 
-
         ball.style.left = ballX + "px";
         ball.style.top = ballY + "px";
         paddle.style.left = paddleX + "px";
@@ -60,8 +53,6 @@ window.onload = () => {
 
         requestAnimationFrame(updateGame);
     }
-
-
 
     function movePaddle(direction) {
         if (direction === 'left') {
@@ -74,4 +65,7 @@ window.onload = () => {
         }
     }
 
-}
+    
+    window.updateGame = updateGame;
+    window.movePaddle = movePaddle;
+};
